@@ -101,6 +101,19 @@ export default function QuizSession({ subject, onComplete }: QuizSessionProps) {
     }
   };
 
+  useEffect(()=>{
+ async function load(){
+   const res=await fetch("/api/subjects");
+
+   if(res.ok){
+      const data=await res.json();
+
+      onSaveSubjects(data);
+   }
+ }
+
+ load();
+},[]);
   const formatTime = (seconds: number) => {
     const m = Math.floor(seconds / 60);
     const s = seconds % 60;
