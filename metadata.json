@@ -1,0 +1,6 @@
+{
+  "name": "Praestans Questions App",
+  "description": "A timed MCQ examination portal with an administrative dashboard for managing subjects and secure access.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
