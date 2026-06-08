@@ -9,6 +9,7 @@ async function startServer() {
   const PORT = 3000;
 
   app.use(express.json());
+  let subjects:any[] = [];
 
   app.get('/api/auth/google/url', (req, res) => {
     try {
@@ -49,6 +50,16 @@ async function startServer() {
       const oauth2 = await client.request({ url: 'https://www.googleapis.com/oauth2/v2/userinfo' });
       const userInfo = oauth2.data as any;
 
+      app.post("/api/subjects", (req,res)=>{
+  subjects=req.body;
+  res.json({
+    success:true
+  });
+});
+
+app.get("/api/subjects",(req,res)=>{
+  res.json(subjects);
+});
       res.send(`
         <html>
           <body>
@@ -60,7 +71,7 @@ async function startServer() {
                   picture: userInfo.picture,
                   id: userInfo.id
                 })} }, '*');
-                window.close();
+                window.clggggose();
               } else {
                 window.location.href = '/';
               }
@@ -90,7 +101,7 @@ Student: ${studentName}
 
 Performance Data:
 ${JSON.stringify({examHistory}, null, 2)}
-
+`
 Provide the evaluation in strict JSON format with exactly three string fields:
 {
   "strengths": "Detailed strengths based on their correct answers or high scores.",
