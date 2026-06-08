@@ -120,6 +120,25 @@ export default function App() {
     setView('admin');
   };
 
+  const handleSaveAll = async () => {
+ try{
+   await fetch("/api/subjects",{
+     method:"POST",
+     headers:{
+       "Content-Type":"application/json"
+     },
+     body:JSON.stringify(localSubjects)
+   });
+
+   onSaveSubjects(localSubjects);
+
+   alert("Saved to server!");
+ }
+ catch{
+   alert("Failed to save");
+ }
+};
+
   return (
     <div className="h-screen bg-purple-50 text-slate-900 font-sans flex flex-col overflow-hidden relative">
       <header className="bg-violet-950 text-white px-4 sm:px-8 py-3 sm:py-4 landscape:py-2 flex justify-between items-center shadow-lg shrink-0">
